@@ -4,9 +4,11 @@ import java.util.Scanner;
 
 public class Converter {
     public static void main(String[] args) {
+        InputScanner inputScanner = new InputScanner();
         SentenceExtractor sentenceExtractor = new SentenceExtractor();
         ToXMLConverter toXMLConverter = new ToXMLConverter();
-        InputScanner inputScanner = new InputScanner();
+        ToCSVConverter toCSVConverter = new ToCSVConverter();
+
 
         String textInput = inputScanner.scanInput();
 
@@ -16,5 +18,6 @@ public class Converter {
 */
         ArrayList<Sentence> sortedSentencesList = sentenceExtractor.extractSentences(textInput);
         toXMLConverter.saveToXML(sortedSentencesList);
+        toCSVConverter.saveToCSV(sortedSentencesList);
     }
 }

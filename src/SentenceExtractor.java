@@ -10,7 +10,7 @@ public class SentenceExtractor {
 
         for(String sentence : sentences){
             if (!sentence.equals("") && !sentence.equals(" ")) {
-                String rightSentence = sentence.trim();
+                String rightSentence = sentence.trim().replaceAll("^ +| +$|( )+", "$1");
                 Sentence sortedSentence = wordsExtractor.extractWords(rightSentence);
                 sortedSentencesList.add(sortedSentence);
             }

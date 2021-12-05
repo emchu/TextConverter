@@ -26,11 +26,11 @@ public class ToXMLConverter {
         try {
             DocumentBuilder db = dbf.newDocumentBuilder();
             dom = db.newDocument();
-            Element rootEle = dom.createElement(rootTag);
+            Element rootElement = dom.createElement(rootTag);
 
             for (Sentence sentence : sortedSentencesList) {
                 sentenceElement = dom.createElement(sentenceTag);
-                rootEle.appendChild(sentenceElement);
+                rootElement.appendChild(sentenceElement);
                 ArrayList<String> sortedWords = sentence.getWords();
 
                 for (String word : sortedWords) {
@@ -41,7 +41,7 @@ public class ToXMLConverter {
                 }
 
             }
-            dom.appendChild(rootEle);
+            dom.appendChild(rootElement);
 
             try {
                 Transformer tr = TransformerFactory.newInstance().newTransformer();

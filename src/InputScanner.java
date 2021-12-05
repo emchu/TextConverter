@@ -6,9 +6,9 @@ public class InputScanner {
         StringBuilder inputTextBuilder = new StringBuilder();
         System.out.print("Enter your text: ");
 
-        while(scanner.hasNextLine()){
+        while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
-            if(line.equals("")){
+            if (line.equals("")) {
                 break;
             }
             line += " ";
