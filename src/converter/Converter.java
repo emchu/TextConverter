@@ -1,6 +1,5 @@
 package converter;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,15 +11,10 @@ public class Converter {
         ToXMLConverter toXMLConverter = new ToXMLConverter();
         ToCSVConverter toCSVConverter = new ToCSVConverter();
 
-
         String textInput = inputScanner.scanInput();
 
-/*
-        Mary had a little lamb . Peter called for the wolf , and Aesop came .
-        Cinderella likes shoes..
-*/
         List<Sentence> sortedSentencesList = sentenceExtractor.extractSentences(textInput);
         toXMLConverter.saveToXML(sortedSentencesList, Optional.empty());
-        toCSVConverter.saveToCSV(sortedSentencesList);
+        toCSVConverter.saveToCSV(sortedSentencesList, Optional.empty());
     }
 }

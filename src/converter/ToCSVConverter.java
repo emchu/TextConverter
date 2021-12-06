@@ -4,12 +4,14 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 public class ToCSVConverter {
-    public void saveToCSV(List<Sentence> sortedSentencesList) {
+    public void saveToCSV(List<Sentence> sortedSentencesList, Optional<String> path) {
+        String pathString = path.orElse("");
 
-        try (PrintWriter writer = new PrintWriter("CSV file.csv")) {
+        try (PrintWriter writer = new PrintWriter(pathString + "CSVfile.csv")) {
             StringBuilder firstLine = new StringBuilder();
 
             StringBuilder CSVStringBuilder = new StringBuilder();
