@@ -1,6 +1,8 @@
 package converter;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 
 public class Converter {
@@ -17,8 +19,8 @@ public class Converter {
         Mary had a little lamb . Peter called for the wolf , and Aesop came .
         Cinderella likes shoes..
 */
-        ArrayList<Sentence> sortedSentencesList = sentenceExtractor.extractSentences(textInput);
-        toXMLConverter.saveToXML(sortedSentencesList);
+        List<Sentence> sortedSentencesList = sentenceExtractor.extractSentences(textInput);
+        toXMLConverter.saveToXML(sortedSentencesList, Optional.empty());
         toCSVConverter.saveToCSV(sortedSentencesList);
     }
 }

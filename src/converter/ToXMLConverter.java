@@ -10,14 +10,17 @@ import org.w3c.dom.*;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 
 public class ToXMLConverter {
 
-    public void saveToXML(ArrayList<Sentence> sortedSentencesList) {
+    public void saveToXML(List<Sentence> sortedSentencesList, Optional<String> path) {
         String rootTag = "text";
         String sentenceTag = "sentence";
         String wordTag = "word";
+        String pathString = path.orElse("");
 
         Document dom;
         Element sentenceElement;
@@ -28,12 +31,13 @@ public class ToXMLConverter {
         try {
             DocumentBuilder db = dbf.newDocumentBuilder();
             dom = db.newDocument();
+            dom.setXmlStandalone(true);
             Element rootElement = dom.createElement(rootTag);
 
             for (Sentence sentence : sortedSentencesList) {
                 sentenceElement = dom.createElement(sentenceTag);
                 rootElement.appendChild(sentenceElement);
-                ArrayList<String> sortedWords = sentence.getWords();
+                List<String> sortedWords = sentence.getWords();
 
                 for (String word : sortedWords) {
                     wordElement = dom.createElement(wordTag);
@@ -54,7 +58,7 @@ public class ToXMLConverter {
                 tr.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
 
                 tr.transform(new DOMSource(dom),
-                        new StreamResult(new FileOutputStream("XML file.xml")));
+                        new StreamResult(new FileOutputStream(pathString + "XMLfile.xml")));
 
             } catch (TransformerException | IOException te) {
                 System.out.println(te.getMessage());

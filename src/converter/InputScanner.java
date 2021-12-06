@@ -6,7 +6,8 @@ public class InputScanner {
     public String scanInput() {
         Scanner scanner = new Scanner(System.in);
         StringBuilder inputTextBuilder = new StringBuilder();
-        System.out.print("Enter your text: ");
+        System.out.println("To confirm the input press \"Enter\" key twice");
+        System.out.println("Enter your text:");
 
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();

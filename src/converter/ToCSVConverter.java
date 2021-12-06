@@ -3,10 +3,11 @@ package converter;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class ToCSVConverter {
-    public void saveToCSV(ArrayList<Sentence> sortedSentencesList) {
+    public void saveToCSV(List<Sentence> sortedSentencesList) {
 
         try (PrintWriter writer = new PrintWriter("CSV file.csv")) {
             StringBuilder firstLine = new StringBuilder();
@@ -16,10 +17,10 @@ public class ToCSVConverter {
             int maxNumberOfWords = 1;
 
             for (Sentence sentence : sortedSentencesList) {
-                CSVStringBuilder.append("converter.Sentence ").append(numberOfSentences).append(",");
+                CSVStringBuilder.append("Sentence ").append(numberOfSentences).append(",");
                 numberOfSentences++;
 
-                ArrayList<String> sortedWords = sentence.getWords();
+                List<String> sortedWords = sentence.getWords();
                 int numberOfWords = 0;
 
                 for (String word : sortedWords) {
@@ -32,7 +33,6 @@ public class ToCSVConverter {
                 }
                 CSVStringBuilder.append('\n');
             }
-            firstLine.append(" ");
 
             for (int i = 1; i <= maxNumberOfWords; i++) {
                 firstLine.append(",").append(" Word ").append(i);
