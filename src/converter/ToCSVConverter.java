@@ -1,3 +1,5 @@
+package converter;
+
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -14,7 +16,7 @@ public class ToCSVConverter {
             int maxNumberOfWords = 1;
 
             for (Sentence sentence : sortedSentencesList) {
-                CSVStringBuilder.append("Sentence ").append(numberOfSentences).append(",");
+                CSVStringBuilder.append("converter.Sentence ").append(numberOfSentences).append(",");
                 numberOfSentences++;
 
                 ArrayList<String> sortedWords = sentence.getWords();
